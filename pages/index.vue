@@ -41,6 +41,8 @@
 
 <script setup>
 
+    import {useOrderStore} from '@/stores/cart.ts'
+
     const currentColor = ref()
     const currentMotive = ref("none")
 
@@ -65,6 +67,8 @@
     }
 );
 
+const order = useOrderStore()
+
 </script>
 
 <style>
@@ -72,9 +76,13 @@
     top: 10vh;
     width: 100%;
     height: 10%;
-    background-color: aqua;
+    /* background-color: aqua; */
     position: absolute;
     top: 3%;
+}
+#overlay img {
+    width: 100%;
+    padding: 3rem;
 }
 
 #shirtParent {
