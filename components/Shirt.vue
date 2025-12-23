@@ -1,8 +1,12 @@
-<script setup>
+<script setup lang="ts">
+import { Color, Motive } from "../types"
 
-const props = defineProps({
-  shirtColor: String
-})
+const props = defineProps<{
+  passedcolor: Color | null
+  passedmotive: Motive | null
+
+}>()
+
 </script>
 
 <template>
@@ -13,7 +17,8 @@ const props = defineProps({
  
  viewBox="0 0 520 580" style="enable-background:new 0 0 520 580;" xml:space="preserve">
 
-            <path :fill="shirtColor" class="st0" d="M447.3,61.7C428.6,51.7,324.9,10,324.9,10S308.3,30.5,260,30.5S195.1,10,195.1,10S91.4,51.7,72.7,61.7
+            <path :fill="passedcolor.color || '#fff'" 
+            class="st0" d="M447.3,61.7C428.6,51.7,324.9,10,324.9,10S308.3,30.5,260,30.5S195.1,10,195.1,10S91.4,51.7,72.7,61.7
 	S5,212.5,5,212.5s5,4,10.4,9.4c5.3,5.3,17.7,9.4,30.4,14.7c12.7,5.3,13.7,8,23.7,14c10,6,18.7,3.3,20.7,0.7
 	c2-2.7,13.7-23.4,13.7-23.4s4.3,191.1,2.2,196.4c-2.1,5.3-1.2,12,1.4,16.7c2.7,4.7-2.7,9.4-3.3,16c-0.7,6.7,0,101.6,0,101.6
 	s9.4,11.4,46.1,11.4c18,0,62.6-2,109.7-2s91.6,2,109.7,2c36.7,0,46.1-11.4,46.1-11.4s0.7-94.9,0-101.6c-0.7-6.7-6-11.4-3.3-16
@@ -77,6 +82,13 @@ const props = defineProps({
         <path class="st4" d="M187.3,13.1c0,0,11.9,71.7,72,71.7s74.8-71.1,74.8-71.1" />
         <path class="st3" d="M198.5,27.3c0,0,15.9,16.2,58.7,16.2s61-13.6,61-13.6" />
     </svg>
+
+<!-- motive overlay -->
+    <div id="overlay">
+        <img 
+        :src="passedmotive.img" 
+        :alt="passedmotive.name">
+    </div>
 </div>
 </template>
 
@@ -105,5 +117,19 @@ const props = defineProps({
         stroke-linejoin: round;
         stroke-miterlimit: 10;
         stroke-dasharray: 3;
+    }
+
+
+    #overlay {
+    top: 10vh;
+    width: 100%;
+    height: 10%;
+    /* background-color: aqua; */
+    position: absolute;
+    top: 3%;
+}
+    #overlay img {
+        width: 100%;
+        padding: 3rem;
     }
 </style>

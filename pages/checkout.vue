@@ -1,14 +1,26 @@
-<template>
- <div>
-    <p>checkout page</p>
-  </div>
-</template>
-
 <script setup>
+import { useOrderStore } from '~/stores/cart';
+
+const store = useOrderStore() 
 </script>
 
+<template>
+ <div class="shirtParent flex min-h-screen">
+            <Shirt 
+            :passedcolor="store.selectedColor" 
+            :passedmotive="store.selectedMotive" 
+            />
+  </div>
+<Total />
+<Form />
+
+</template>
+
+
+
 <style>
-/* body {
-  @apply bg-slate-900 text-slate-100;
-} */
+.shirtParent {
+    position: relative;
+    display: inline-block;
+}
 </style>
