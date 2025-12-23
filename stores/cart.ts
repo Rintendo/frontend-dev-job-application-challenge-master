@@ -3,10 +3,10 @@ import { Color, Motive, CartState } from "~/types"
 
 export const useOrderStore = defineStore('order', {
 state: (): CartState => ({
-    fetchedColors: [] as Color[],
-    fetchedMotives: [] as Motive[],
-    selectedColor: null as Color | null,
-    selectedMotive: null as Motive | null,
+    fetchedColors: [],
+    fetchedMotives: [],
+    selectedColor: null,
+    selectedMotive: null,
     loaded: false 
 
 
