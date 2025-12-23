@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Color, Motive } from "../types"
+import { Color, Motive } from "~/types"
 
 const props = defineProps<{
   passedcolor: Color | null
@@ -10,14 +10,14 @@ const props = defineProps<{
 </script>
 
 <template>
-<div>
+ <div class="shirt-container relative w-64 md:w-80 lg:w-96 xl:w-25vw] mx-auto">
     <svg class="w-full h-auto"
 
  version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
  
  viewBox="0 0 520 580" style="enable-background:new 0 0 520 580;" xml:space="preserve">
 
-            <path :fill="passedcolor.color || '#fff'" 
+        <path :fill="passedcolor ? passedcolor.color : '#fff'"
             class="st0" d="M447.3,61.7C428.6,51.7,324.9,10,324.9,10S308.3,30.5,260,30.5S195.1,10,195.1,10S91.4,51.7,72.7,61.7
 	S5,212.5,5,212.5s5,4,10.4,9.4c5.3,5.3,17.7,9.4,30.4,14.7c12.7,5.3,13.7,8,23.7,14c10,6,18.7,3.3,20.7,0.7
 	c2-2.7,13.7-23.4,13.7-23.4s4.3,191.1,2.2,196.4c-2.1,5.3-1.2,12,1.4,16.7c2.7,4.7-2.7,9.4-3.3,16c-0.7,6.7,0,101.6,0,101.6
@@ -85,15 +85,20 @@ const props = defineProps<{
 
 <!-- motive overlay -->
     <div id="overlay">
-        <img 
-        :src="passedmotive.img" 
-        :alt="passedmotive.name">
+        <img :src="passedmotive ? passedmotive.img : ''" 
+        :alt="passedmotive ? passedmotive.img : ''" 
+        id="overlayImg"
+        >
     </div>
 </div>
 </template>
 
 <style>
-
+#overlayImg {
+        position: absolute;
+        object-fit: cover;
+        object-position: center center;
+    }
 
     .st1 {
         fill: #24242b7c;
@@ -119,17 +124,20 @@ const props = defineProps<{
         stroke-dasharray: 3;
     }
 
-
     #overlay {
-    top: 10vh;
-    width: 100%;
-    height: 10%;
-    /* background-color: aqua; */
-    position: absolute;
-    top: 3%;
-}
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 30%;
+        overflow: hidden;
+    }
+    
     #overlay img {
         width: 100%;
-        padding: 3rem;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 45%;
     }
 </style>

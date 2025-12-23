@@ -1,13 +1,14 @@
+<script setup lang="ts">
+import { useOrderStore } from '@/stores/cart'
+</script>
+
 <template>
-  <div id="main" class="h-screen flex flex-col">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </div>
 </template>
 
-<script setup>
-</script>
+
 
 <style>
 

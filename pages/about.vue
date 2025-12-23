@@ -1,14 +1,17 @@
-<template>
- <div>
-    About this project
-  </div>
-</template>
-
-<script setup>
+<script setup lang="ts">
+definePageMeta({
+  layout: 'default',
+  hideTotal: true,
+  headerText: 'About this project',
+  headerAction: {
+    label: 'Back',
+    to: null,
+  },
+})
 </script>
 
-<style>
-/* body {
-  @apply bg-slate-900 text-slate-100;
-} */
-</style>
+<template>
+<section class="h-[80vh] flex items-center justify-center text-4xl">
+    <p>This is a Demo Page, lovingly made.</p>
+  </section>
+</template>
